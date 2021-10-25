@@ -46,3 +46,15 @@ class Project(AbstractClockify):
         except Exception as e:
             logging.error("API error: {0}".format(e))
             raise e
+
+    def remove_project(self, workspace_id, project_id):
+        """Delete project from workspace.
+        :param workspace_id Id of workspace.
+        :param project_id Id of project to be deleted.
+        """
+        try:
+            url = self.base_url + '/workspaces/' + workspace_id + '/projects/' + project_id
+            return self.delete(url)
+        except Exception as e:
+            logging.error("API error: {0}".format(e))
+            raise e
