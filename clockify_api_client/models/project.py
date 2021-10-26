@@ -47,6 +47,20 @@ class Project(AbstractClockify):
             logging.error("API error: {0}".format(e))
             raise e
 
+    def update_project(self, workspace_id, project_id, data):
+        """Update project in workspace.
+        :param workspace_id Id of workspace.
+        :param project_id Id of project.
+        :param data    Parameters of project to update
+        :return             Dictionary representation of new project.
+        """
+        try:
+            url = self.base_url + '/workspaces/' + workspace_id + '/projects/' + project_id
+            return self.update(url, data)
+        except Exception as e:
+            logging.error("API error: {0}".format(e))
+            raise e
+
     def remove_project(self, workspace_id, project_id):
         """Delete project from workspace.
         :param workspace_id Id of workspace.
