@@ -56,7 +56,7 @@ class Project(AbstractClockify):
         """
         try:
             url = self.base_url + '/workspaces/' + workspace_id + '/projects/' + project_id
-            return self.update(url, data)
+            return self.put(url, data)
         except Exception as e:
             logging.error("API error: {0}".format(e))
             raise e
